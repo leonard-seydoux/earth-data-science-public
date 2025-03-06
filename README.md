@@ -1,9 +1,9 @@
 # Earth data science
 
-![](https://img.shields.io/badge/Python-3.11-blue)
+![](https://img.shields.io/badge/Python-3.10+-blue)
 [![](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![](https://img.shields.io/badge/Year-2024/2025-yellow)
-![](https://img.shields.io/badge/Status-In%20progress-green)
+![](https://img.shields.io/badge/Status-Completed-green)
 ![](https://img.shields.io/badge/Institution-IPGP-red)
 
 
