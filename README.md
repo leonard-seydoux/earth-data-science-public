@@ -30,9 +30,7 @@ The lectures will fit within two sessions of four hours each. The following list
 7. __Applications__. This section introduces the different applications of machine learning in the Earth sciences
 8. __Unsupervised learning__. This section introduces the concept of unsupervised learning, relying a lot on the previously seen concepts
 
-<br>
-
-## Labs    
+## Notebooks    
 
 ### Structure
 
