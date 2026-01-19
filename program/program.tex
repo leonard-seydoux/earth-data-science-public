@@ -1,0 +1,128 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{times}
+\usepackage{amsmath, amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{xltabular}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage[dvipsnames]{xcolor}
+\geometry{margin=2.5cm}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=Bittersweet,
+    filecolor=magenta,      
+    urlcolor=Bittersweet,
+    pdftitle={Earth Data Science},
+    pdfpagemode=FullScreen,
+}
+
+% Url font to inconsolata
+\usepackage{inconsolata}
+
+% No indent for new paragraphs, but a bit of space
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+
+% Header with logo only on first page
+\fancypagestyle{firstpage}{%
+  \fancyhf{}
+  \fancyhead[C]{\includegraphics[height=2.7cm]{logo.png}\\Master 2\\Institut de physique du globe de Paris\\Academic year 2025-2026}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
+% Move title down
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    \vspace*{4cm} % Adjust the vertical space as needed
+    {\LARGE \@title \par}
+    \vspace{0.5cm} % Space between title and author
+    {\large \@author \par}
+    \vspace{0.2cm} % Space between author and date
+    {\large \@date \par}
+  \end{center}
+}
+\makeatother    
+
+\pagestyle{plain}
+
+\title{Earth Data Science}
+\author{Léonard Seydoux (\href{mailto:seydoux@ipgp.fr}{\url{seydoux@ipgp.fr}}), Antoine Lucas,\\ Éléonore Stutzmann, Alexandre Fournier \& Geneviève Moguilny}
+\date{}
+
+\begin{document}
+\maketitle
+\thispagestyle{firstpage}
+
+\section*{Course objectives}
+
+This course aims at introducing the fundamental concepts of data science and machine learning applied to Earth sciences, with a strong emphasis on (1) understanding the underlying concepts rather than using methods as black boxes, (2) practical implementation and hands-on experience on real-world datasets, and (3) critical thinking regarding the results produced by statistical and machine learning models.
+
+Examples and practical sessions are mainly drawn from geophysics (seismology, lidar, environmental sensors), but the methods are generic and transferable to other domains. 
+The course is designed to be accessible to students with a basic background in programming (Python) and statistics. 
+Practical sessions will provide opportunities to deepen understanding through direct application, and will make use of the Scikit-Learn and PyTorch libraries on the S-CAPAD platform.
+
+\section*{General organization}
+The course consists of \textbf{6 sessions of 4 hours each}, plus \textbf{one final examination} at the end of the course.
+Each session typically follows this structure: approximately \textbf{1 hour of lecture} (theory, intuition, examples), followed by approximately \textbf{3 hours of hands-on practical work} on computers.
+Practical sessions are carried out individually and form a central component of the course.
+Session dates are indicated in the online course schedule, at \href{https://servcelcat.ipgp.fr/cal?vt=month&dt=2026-01-13&et=module&fid0=1317}{this link}.
+
+\begin{xltabular}{\textwidth}{@{}c>{\raggedright\arraybackslash}p{3.5cm}X@{}}
+\toprule
+\textbf{Session} & \textbf{Lecture (1 hour)} & \textbf{Practical work (3 hours)} \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+1 &
+Introduction to machine learning: regression &
+\textbf{River sensor calibration: can a cheap sensor replace an expensive one?} Notions seen in the practical session include data inspection, linear and non-linear regression, model evaluation, and physical interpretation of results. \\
+\addlinespace
+2 &
+Classification and feature extraction &
+\textbf{Classification of seismo-volcanic signals}. Introduction to feature extraction, model selection, and error analysis with confusion matrices. \\
+\addlinespace
+3 \& 4&
+Representation, classification and clustering &
+\textbf{Lidar data: supervised classification and unsupervised exploration of cloud of points.} Notions seen include feature extraction, clustering algorithms, and evaluation metrics. We will perform an in-depth analysis, comparison of methods, and critical interpretation of results. \\
+\addlinespace
+5 &
+Deep learning &
+\textbf{Neural networks applied to digit recognition.} This includes fully-connected networks and convolutional neural networks. For students willing to go further: inference using PhaseNet, a deep learning model for seismic phase picking. \\
+\addlinespace
+\midrule
+6 &
+Course summary and Q\&A &
+Synthesis of lectures and practical sessions, discussion of results, and possible improvements.  
+Introduction to recent AI approaches (foundation models, language models, attention mechanisms, frugal learning).  
+Critical reading of a recent scientific paper. \\
+\bottomrule
+\end{xltabular}
+
+\section*{Assessment}
+
+The final assessment will take the form of an \textbf{individual mini-project}, inspired by a lightweight hackathon format over four hours. The project will be based on a novel dataset to classify, where students will be asked to compare different classification approaches introduced during the course. The goal is \textbf{not} to achieve the best possible predictive performance.
+
+Grading will primarily be based on the quality of reasoning, the ability to compare and interpret models, the clarity of result presentation, and critical thinking with respect to the methods used.
+
+The final exam will take place during the last session of the course. The document to be submitted will be a single Jupyter notebook, containing code, comments, and visualizations.
+
+\section*{Important remarks}
+
+Active participation during practical sessions is strongly encouraged. Questions, discussions, and personal initiatives are welcome, especially during synthesis sessions.
+
+\bigskip
+\noindent
+\textit{This planning may be subject to minor adjustments depending on the progress of the course.}
+
+\end{document}
