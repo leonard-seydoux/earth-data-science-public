@@ -1,0 +1,341 @@
+/* @theme presentation */
+
+@import 'default';
+
+/* Font-awesome */
+@import 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/all.min.css';
+
+/* Source Sans 3 font */
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
+
+/* Root variables */
+:root {
+
+    /* Fonts */
+    --font: 'Source Sans 3';
+    --font-code: 'Cascadia Code';
+
+    /* IPGP color palette */
+    --color-lava: #ef3b37;
+    --color-ocre: #f35639;
+    --color-magma-accent: #da291c;
+    --color-magma: #da291c;
+    --color-rubis: #8a1538;
+    --color-sable: #f7f3ef;
+    --color-graphite: #48424d;
+    --color-graphite-accent: #5a555e;
+    --color-terra: #dca67a;
+    --color-blueschist: #84bdde;
+    --color-olivine: #7aa585;
+
+    /* Color settings */
+    --color: var(--color-graphite);
+    --color-h1: var(--color-graphite);
+    --color-h2: var(--color-graphite);
+    --color-h2-bg: transparent;
+    --color-katex: var(--color-olivine);
+    --color-link: var(--color-magma);
+    --color-code-link: var(--color-blueschist);
+    --color-footer: var(--color-olivine);
+    --color-titlepage-bg: var(--color-sable);
+}
+
+/* General title settings */
+h1,
+h2,
+h3,
+h4 {
+    color: inherit;
+    font-family: var(--font);
+}
+
+/* General non-title text settings */
+p,
+div,
+ul,
+li,
+footer,
+section::after,
+label {
+    font-family: var(--font);
+}
+
+/* Paragraphs */
+p,
+ul,
+div,
+li {
+    font-size: 20pt;
+    font-weight: 400;
+}
+
+/* Remove itemize indentation */
+ul,
+ol {
+    padding-left: 25px;
+}
+
+/* Main titles */
+h1 {
+    color: var(--color-h1);
+    font-size: 170%;
+    font-weight: 900;
+    padding-top: 50px;
+}
+
+/* Slide titles are fixed at the top of the page */
+h2 {
+    font-weight: 900;
+    text-align: center;
+    position: fixed;
+    top: 10px;
+    left: 0px;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 25px;
+    color: var(--color-h2);
+    background-color: var(--color-h2-bg);
+    font-size: 140%;
+
+}
+
+/* Remove bold from another color */
+h1 strong,
+h2 strong,
+h3 strong,
+h4 strong {
+    color: var(--color-rubis);
+}
+
+/* Largest bold style */
+strong {
+    font-weight: 900;
+}
+
+/* Slide numbers */
+section::after {
+    font-size: 12pt;
+    color: var(--color-graphite-accent);
+    text-decoration: none;
+    background-color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    left: auto;
+    transform: none;
+    z-index: 10;
+}
+
+/* Footer */
+footer,
+footer a {
+    font-size: 15pt;
+    color: var(--color-footer);
+    text-decoration: none;
+}
+
+section footer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+a {
+    font-family: inherit;
+    font-size: 100%;
+    color: var(--color-link);
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-color: var(--color-link);
+    text-decoration-thickness: 2.5px;
+    text-underline-offset: 9px;
+}
+
+/* Code-style links */
+
+a:has(code) {
+    vertical-align: top;
+    color: var(--color-code-link);
+    text-decoration: none;
+}
+
+a:has(code):hover {
+    text-decoration: none;
+}
+
+a:has(code)>code {
+    background: none;
+    border: 2.5px solid var(--color-code-link);
+}
+
+.katex {
+    color: var(--color-katex);
+    font-size: 115%;
+}
+
+.emoji {
+    font-size: 120%;
+    display: inline;
+}
+
+/* Shields.io */
+
+img[src*="shields.io"] {
+    display: inline;
+}
+
+section {
+    display: flex;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 100px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+    color: var(--color);
+    background-color: var(--color-sable);
+}
+
+section div,
+section ul,
+section ol {
+    flex: 1;
+}
+
+p:has(img) {
+    text-align: center;
+}
+
+img {
+    background-color: transparent;
+    max-height: 500px;
+}
+
+
+/* Title page */
+
+section.titlepage {
+    display: block;
+    background-color: var(--color-sable);
+    background-image: url("contents/images/logos/ipgp-white.png");
+    background-size: 1800px;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    gap: 10px;
+    flex-direction: column;
+}
+
+section.titlepage h1 {
+    width: 80%;
+    padding-top: 0px;
+    padding-bottom: 30px;
+    margin: 0px;
+    font-weight: 800;
+}
+
+section.titlepage p {
+    text-align: left;
+}
+
+section.titlepage footer {
+    color: rgb(23, 13, 13);
+}
+
+section.titlepage footer a {
+    font-size: 15pt;
+}
+
+section.titlepage::after {
+    display: none;
+}
+
+section.titlepage div,
+section.titlepage img,
+section.titlepage p {
+    flex: 1;
+    max-width: 1000px;
+    margin-top: 10px;
+}
+
+
+
+/* Contents based on titlepage */
+
+section.titlepage ol a {
+    text-decoration: none;
+}
+
+section.titlepage ol {
+    color: var(--color-link);
+}
+
+/* Dark style */
+
+section.dark h2 {
+    background-color: black;
+    color: var(--color-sable)
+}
+
+pre,
+code {
+    font-family: var(--font-code);
+}
+
+table {
+    font-size: 16pt;
+}
+
+/* Make the split background pane white */
+section[data-marpit-advanced-background-split="right"]>div[data-marpit-advanced-background-container]>figure,
+section[data-marpit-advanced-background-split="left"]>div[data-marpit-advanced-background-container]>figure {
+    background-color: #fff !important;
+}
+
+/* Boxes */
+
+.box {
+    flex-basis: 25%;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 3px solid black;
+    padding: 20px;
+    text-align: center;
+
+
+}
+
+/* Fix alignment for images in paragraphs */
+
+p:has(img) {
+    vertical-align: top;
+    display: inline;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Ensure images themselves align at the top */
+
+p img {
+    margin-top: -20px;
+    margin-bottom: -20px;
+    display: inline;
+    text-align: center;
+    align-self: center;
+}
+
+
+/* Ensure all paragraphs align at the top */
+
+section>p {
+    vertical-align: top;
+    margin-top: 0;
+}

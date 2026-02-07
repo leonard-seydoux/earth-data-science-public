@@ -1,0 +1,13 @@
+axes.titlesize: medium
+axes.linewidth: 1.2
+axes.prop_cycle: cycler('color', ['84bdde', 'f35639', '7aa585', 'dca67a', '5a555e', 'f7f3ef'])
+
+xtick.major.width: 1
+ytick.major.width: 1
+
+lines.linewidth: 1.2
+contour.linewidth: 1.5
+
+figure.facecolor: none
+figure.dpi: 300
+

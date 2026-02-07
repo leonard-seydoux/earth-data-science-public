@@ -1,0 +1,21 @@
+# Font 
+font.family: sans-serif
+font.sans-serif: Caveat
+font.size: 16
+font.weight: bold
+axes.labelweight: bold
+axes.titleweight: bold
+
+# Tick widths
+xtick.major.width: 1.5
+ytick.major.width: 1.5
+lines.linewidth: 1.5
+patch.linewidth: 1.5
+
+# Colors from the IPGP chart
+axes.prop_cycle: cycler('color', ['84bdde', 'f35639', '7aa585', 'dca67a', '5a555e', 'f7f3ef'])
+
+# Remove facecolor 
+figure.facecolor: none
+figure.dpi: 300
+
