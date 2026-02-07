@@ -48,7 +48,7 @@ Master lecture at the [institut de physique du globe de Paris](https://www.ipgp.
 
 - __Read & digest__ scientific papers
 
-![bg right 84%](contents/images/papers/bergen2019machine.png)
+![bg right 80%](contents/images/papers/bergen2019machine.png)
 
 <!-- _footer: Bergen et al. (2019)  -->
 
@@ -66,7 +66,7 @@ Master lecture at the [institut de physique du globe de Paris](https://www.ipgp.
 
 - __Keep up__ with the ongoing pace!
 
-![bg right 80%](contents/images/papers/mousavi2022papers.jpg)
+![bg right 80%](https://www.science.org/cms/10.1126/science.abm4470/asset/ca252939-7ddb-4fe2-af0b-aa147130f29c/assets/images/large/science.abm4470-f1.jpg)
 
 <!-- _footer: Mousavi et al. (2022) -->
 
@@ -103,13 +103,13 @@ The [deep learning](https://www.deeplearningbook.org/) book by Goodfellow, Bengi
 ---
 
 ## How fast can you describe the following images?
-![width:900px](contents/images/papers/karpathy2015deep-nocap.png)
+![](contents/images/papers/karpathy2015deep-nocap.png)
 <!-- _footer: Karpathy & Fei-Fei (2015) -->
 
 ---
 
 ## How accurate are those descriptions?
-![width:900px](contents/images/papers/karpathy2015deep.png)
+![](contents/images/papers/karpathy2015deep.png)
 <!-- _footer: Karpathy & Fei-Fei (2015) -->
 
 ---
@@ -150,7 +150,7 @@ __Message__: not all times series of 500 samples are seismograms. Seismograms ar
 
 Most humans can pinpoint events. <br><br>
 
-![bg right 80%](contents/images/papers/moran2008helens-nolabels.png)
+![bg right 70%](contents/images/papers/moran2008helens-nolabels.png)
 
 <!-- _footer: modified after Moran et al. (2008) -->
 
@@ -163,7 +163,7 @@ Most humans can pinpoint events.
 Experts can __classify__ them.
 
 
-![bg right 80%](contents/images/papers/moran2008helens.png)
+![bg right 70%](contents/images/papers/moran2008helens.png)
 
 <!-- _footer: modified after Moran et al. (2008) -->
 
@@ -171,11 +171,12 @@ Experts can __classify__ them.
 
 ## Example task: dive into previously unseed data
 
-![width:1000px](contents/images/papers/clinton2021marsquake.jpg)
+![](contents/images/papers/clinton2021marsquake.png)
 
 Expert-detected marsquake within continuous insight data. 
 
 <!-- _footer: Clinton et al. (2021) -->
+
 ---
 
 ## Machine learning tasks
@@ -184,7 +185,9 @@ Expert-detected marsquake within continuous insight data.
 - Hard-to-describe tasks
 - Exploration of new data
 
-![bg right 80%](images/papers/mousavi2022papers.jpg)
+![bg right 80%](https://www.science.org/cms/10.1126/science.aau0323/asset/0e7cf386-2fd1-4683-8114-1bb875dbc580/assets/graphic/363_aau0323_f3.jpeg)
+
+<!-- _footer: Bergen et al. (2019) -->
 
 ---
 
@@ -401,7 +404,6 @@ __Hyperparameters:__ the __learning rate__ $\eta$ defines the update step.
 ---
 
 ## How to deal with learning rate?
-<!-- ![width:950px](images/supervised/learning_rate.svg) -->
 
 __Too slow__
 ![width:330](contents/figures/learning_rate_slow.png)
@@ -467,24 +469,16 @@ The [scikit-learn.org](https://scikit-learn.org/stable/) website provides a unif
 
 --- 
 
-<!-- _backgroundColor: #333 -->
-<!-- _color: white -->
-<!-- _footer: Jupyter $\\times$ Obsera -->
-
 ## Notebook 1
 
-### High-quality data<br>from cheap sensors
+![bg right](https://wp1.aeris-data.fr/wp-content-aeris/uploads/sites/56/2021/03/QCK_1-scaled.jpg) 
 
-<br>
-<img src="images/notebooks/lab_1_picture_of_river.png" width=400px align="left"/>
+Learning suspended sediment concentration from river turbidity <br>
+![](contents/figures/notebook_1.png) 
 
-![bg right 70%](images/notebooks/lab_1_sensor_calibration.svg) 
-
-
-
+<!-- _footer: Jupyter $\\times$ Obsera -->
 
 ---
-
 
 # 4. Classification
 
@@ -495,29 +489,25 @@ The [scikit-learn.org](https://scikit-learn.org/stable/) website provides a unif
 ## Supervised learning tasks
 
 __Regression__
-$x$ and $y$ are continuous
 ![width:350px](contents/figures/regression.png)
+$x$ and $y$<br>are continuous
 
 __Classification__
-$x$ is continuous and $y$ is discrete 
 ![width:350px](contents/figures/classification.png)
+$x$ is continuous<br>and $y$ is discrete 
 
 ---
 
 <!-- _footer: www.scikit-learn.org -->
 
-## The classification task
+## Classification algorithms
 
-<div align=center>
-
-![](images/supervised/classification.svg)
+![](contents/figures/classification_comparison.png)
 Here again, we have many possibilities.
-
-</div>
 
 ---
 
-## The classification task
+## Classification
 
 <div>
 
@@ -629,7 +619,7 @@ Performance of a classifier can be derived from the confusion matrix:
 - __Precision__: fraction of true positives among predicted positives $= \frac{TP}{TP + FP}$
 - __Recall__: fraction of true positives among actual positives $= \frac{TP}{TP + FN}$
 
-![bg right 60%](contents/figures/accuracy.png)
+![bg right 60%](contents/figures/confusion_matrix.png)
 
 ---
 
@@ -661,15 +651,12 @@ There is no need for a complex model if you have a good __representation__ of th
 
 ---
 
-## Representation depending on the task complexity
+## Choosing features
 
-<div>
+Hand-designed? 
+Learned features?
 
-Hand-designed or learned features?
-
-</div>
-
-![width:750px](images/deep-learning-book/figure-1-5.png)
+![bg right 90%](contents/figures/choosing_features.png)
 
 <!-- _footer: Goodfellow et al. (2016) -->
 
@@ -733,7 +720,7 @@ Which __representation__ of $\mathbf{x}$ works best?
 
 ## Handcrafted features
 
-![bg right 90%](images/examples/features.png)
+![](images/examples/features.png)
 
 <!-- _footer: Jasperson et al. (2022) -->
 
@@ -748,28 +735,26 @@ What is the guarantee that the features we choose are the best ones?
 
 ---
 
-<!-- _color: white -->
-<!-- _backgroundColor: #333 -->
 <!-- _footer: Jupyter $\\times$ Espinosa-Curilem et al. (2025) -->
 
 ## Notebook 2
 
-### Volcano seismology classification from Chilean volcanoes
+Classification of seismo-volcanic events<br>
+![](contents/figures/notebook_2.png)
 
-![bg right 90%](images/lab-2.png)
+![bg right grayscale](https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Chillan_y_Nevados_de_Chillan_1.jpg/2560px-Chillan_y_Nevados_de_Chillan_1.jpg)
 
 
 ---
 
-<!-- _color: white -->
-<!-- _backgroundColor: #333 -->
 <!-- _footer: Jupyter $\\times$  Brodu and Lague (2012) -->
 
 ## Notebook 3
 
-### Identification of objects in a lidar cloud from labeled subset
+Lidar cloud classification
+![](contents/figures/notebook_3.png)
 
-![bg right 90%](images/lab-3.png)
+![bg right grayscale](https://upload.wikimedia.org/wikipedia/commons/d/de/Forêt_fontainebleau_pins.jpg)
 
 ---
 
@@ -823,9 +808,11 @@ representation of the data
 
 --- 
 
-## Clustering – class-membership identification without labels
+## Clustering: class-membership identification without labels
 
-![width:800px](images/unsupervised/cluster_comparison.svg)
+![width:900](contents/figures/clustering_comparison.png)
+
+Again, many possibilities.
 
 <!-- _footer: from [scikit-learn.org](https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html) -->
 
@@ -833,7 +820,7 @@ representation of the data
 
 ## Definitions of clustering
 
-![bg right 80%](contents/figures/k-means-initial.png)
+![bg right 80%](contents/figures/k_means_initial.png)
 
 - _Top-bottom_: partition the heterogeneous data into __homogeneous__ subsets
 
@@ -846,7 +833,7 @@ __We need to provide a definition of similarity or homogeneity__
 
 ## _k_-means clustering
 
-![bg right 80%](contents/figures/k-means-final.png)
+![bg right 80%](contents/figures/k_means_final.png)
 
 
 $k$-means is a clustering algorithm that partitions the data into $k$ clusters by minimizing the __inertia__:
@@ -868,7 +855,7 @@ In practice, we need to provide the number of clusters $k$, and the algorithm wi
 3. __Update__ centroids
 4. __Repeat__ until convergence.
 
-![bg right 80%](contents/figures/k-means.gif)
+![bg right 80%](contents/figures/k_means.gif)
 
 <!-- _footer: Wikipedia -->
 
@@ -947,7 +934,7 @@ Principal component analysis (PCA) is a dimensionality reduction technique that 
 
 ---
 
-## Independent component analysis
+## Independent<br>component analysis
 
 Independent component analysis (ICA) is a dimensionality reduction technique that maximizes the independence of the components.
 
@@ -955,7 +942,7 @@ Independent component analysis (ICA) is a dimensionality reduction technique tha
 
 ---
 
-## Principal vs. independent component analysis
+## Principal vs. independent<br>component analysis
 
 For blind source separation, ICA is preferred over PCA.
 
@@ -979,17 +966,13 @@ __Kernel PCA__ is a non-linear dimensionality reduction technique that uses the 
 
 ## Artificial neuron unit
 
-<div>
-
 A __neuron__, or unit, takes a set of inputs $\bf x$ and outputs an activation value $h$, as
 $$
 h = \varphi\left(\sum_{i=1}^{N} w_i x_i + b \right)
 $$
 with $w_i$ the weights, $b$ the bias, $\varphi$ is the activation function, and $N$ is the number of inputs.
 
-</div>
-
-![bg right 60%](images/models/neuron.png)
+![bg right 80%](contents/figures/neural_net.png)
 
 ---
 
@@ -1001,7 +984,7 @@ $$
 h = \varphi\left(\sum_{i=1}^{N} w_i x_i + b \right)
 $$
 
-with $w_i$ the weights, $b$ the bias, $\varphi$ is the activation function, and $N$ is the number of inputs. Common activation functions include the __sigmoid__ function, defined as
+Common activation functions include the __sigmoid__ function, defined as
 
 $$
 \varphi(z) = \frac{1}{1 + e^{-z}}
@@ -1019,21 +1002,17 @@ $$
 h = \varphi\left(\sum_{i=1}^{N} w_i x_i + b \right)
 $$
 
-with $w_i$ the weights, $b$ the bias, $\varphi$ is the activation function, and $N$ is the number of inputs. Common activation functions include the __rectified linear unit__ (ReLU), defined as
+Common activation functions include the __rectified linear unit__ (ReLU), defined as
 
 $$
 \varphi(z) = \max(0, z)
 $$
-
-<!-- _footer: ReLU are empirically preferred to sigmoid units for  computational efficiency no saturation when $x$ is large.-->
 
 ![bg right 75%](contents/figures/relu.png)
 
 ---
 
 ## The multilayer perceptron
-
-<div>
 
 A __multilayer perceptron__ is a neural network with multiple hidden layers:
 $$
@@ -1044,9 +1023,7 @@ y_i &= \varphi^{(3)}\left(\sum_j w_{ij}^{(3)}h_j^{(2)} + b_i^{(3)}\right)
 \end{align*}
 $$
 
-</div>
-
-![bg right 75%](images/models/mlp_annotated.png)
+![bg right 80%](contents/figures/neural_net.png)
 
 ---
 
@@ -1060,7 +1037,7 @@ y = \varphi^{(\ell)}\left(\mathbf{W}^{(\ell)}\varphi^{(\ell - 1)}\left(\mathbf{W
 $$
 </div>
 
-![bg right 75%](images/models/mlp_annotated.png)
+![bg right 80%](contents/figures/neural_net.png)    
 
 ---
 
@@ -1068,7 +1045,7 @@ $$
 
 
 Multi-layer perceptrons that solves the XOR problem with binary activations:<br>
-![width:300](images/models/xor.png)
+![width:400](contents/figures/neural_net_solve_xor.png)
 
 
 ![bg right 75%](contents/figures/xor.png)
@@ -1119,27 +1096,22 @@ where is $\eta$ the __learning rate__ that controls the size of the update.
 
 ## Gradient descent issues
 
-<div>
-
 - __Local minima__: getting stuck in a local minimum.
 
 - __Sattling points__: behaves as a local minimum but is not.
 
 - __Plateau__: flat loss function, vanishing gradient, slow convergence.
 
-</div>
-
-![bg right 75%](images/models/gd_issues.png)
+![bg right 56%](contents/figures/linear_regression_gradient_descent.gif)
 
 ---
 
-<!-- _backgroundColor: white -->
 
 ## Gradient descent common issues with plateau
 
 
-![width:400](contents/figures/relu.png) ![width:400](contents/figures/sigmoid.png)
 
+![width:400](contents/figures/relu.png) ![width:400](contents/figures/sigmoid.png)
 __Plateau__ are flat regions of the loss function where the gradient is zero. This can happen with activation functions such as the sigmoid function with saturation. It can also happen with the ReLU function for inputs with negative values.
 
 ---
@@ -1157,22 +1129,17 @@ __Plateau__ are flat regions of the loss function where the gradient is zero. Th
 
 ## Learning rate
 
-<div>
-
-The __learning rate__ is a hyperparameter that controls the size of the update of the parameters:
+The __learning rate__ controls the size of the update of the parameters:
 
 $$
 \theta \leftarrow \theta - \eta \cfrac{\partial \mathcal L}{\partial \theta}
 $$
 
-We must look for a learning rate to avoid local minima while still converging fast enough, without diverging.
+We must look the best learning rate via __hyperparameters tuning__. We can also __adapt__ the learning rate.
 
-We can also __adapt__ the learning rate.
 
-</div>
-
-![bg right 80%](images/models/lr.png)
-
+![bg right 90%](contents/figures/learning_rate_slow.png)
+![bg right 90%](contents/figures/learning_rate_fast.png)
 
 ---
 
@@ -1191,7 +1158,8 @@ where $\alpha$ is the a damping parameter, and $v_i$ is the __velocity__. Lower 
 
 </div>
 
-![bg right 80%](images/models/mom.webp)
+![bg right 90%](contents/figures/gradient_descent_momentum_lr1_mom0.6.png)
+![bg right 90%](contents/figures/gradient_descent_momentum_lr0.5_mom1.png)
 
 
 
@@ -1227,7 +1195,7 @@ The __training curves__ are a good way to monitor the training of a model.
 
 </div>
 
-![bg right 75%](images/models/learning_curve.png)
+![bg right 80%](contents/figures/training_curve.png)
 
 ---
 
@@ -1245,67 +1213,27 @@ The __stochastic gradient descent__ is a technique to compute the loss gradient 
 
 </div>
 
-![bg right 60%](images/models/sgd.png)
+![bg right 60%](contents/figures/stochastic_gradient_descent.png)
 
 ---
 
-<!-- _backgroundColor: white -->
+## Splitting the dataset
 
-## Mini-batch gradient descent
+__Underfitting__
+![width:330](contents/figures/fit_under_test.png)
 
-<div>
+__Overfitting__
+![width:330](contents/figures/fit_over_test.png)
 
-The __mini-batch gradient descent__ is a technique to compute the gradient of the loss function with respect to a subset of the dataset. It is a compromise between the full-batch gradient descent and the stochastic gradient descent.
+__Just right__
+![width:330](contents/figures/fit_right_test.png)
 
-<br>
-
-![](images/models/mb.png)
-
----
-
-## Overfitting and underfitting
-
-<div>
-
-__Overfitting__: too complex model, does not generalize to new data.
-
-__Underfitting__: too simple model, does not capture the data structure.
-
-</div>
-
-![bg right 90%](images/models/fitting_mod.png)
-
----
-
-## Train and test split
-
-<div>
-
-The __training set__ is used to train the model. The __test set__ is used to evaluate the model generalization error on unseen data.
-
-*The typical split is 80% for the training set and 20% for the test set.*
-
-</div>
-
-![bg right 90%](images/models/train_test_split.png)
-
----
-
-## Training and test learning curves
-
-
-We must lower train and test losses
-![width:300](images/models/tt_loss.png)
-If training loss << test loss, the model __overfits__ the training set.
-
-![bg right 90%](images/models/train_test_split.png)
-
-
+Splitting the dataset into a __training__ and a __testing__ set, monitor both performances
 
 ---
 
 
-## Targetting the right model complexity
+## The right complexity
 
 <div>
 

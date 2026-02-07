@@ -5,7 +5,7 @@ from sklearn.datasets import load_iris
 from sklearn.svm import SVC
 from sklearn.metrics import ConfusionMatrixDisplay
 
-import plot
+import utils
 
 KERNELS = "linear", "rbf", "poly"
 
@@ -19,8 +19,11 @@ def make_classification(x, y, kernel="linear"):
 
 def main():
 
+    # Arguments
+    args = utils.parse_args()
+
     # Customize matplotlib style
-    plot.xkcd_style()
+    utils.xkcd_style()
 
     # Create accuracy matrix
     data = load_iris()
@@ -35,12 +38,12 @@ def main():
 
         for i in range(len(np.unique(labels))):
             samples = features[labels == i]
-            plot.samples(ax[j, 0], samples, labels[labels == i])
+            utils.samples(ax[j, 0], samples, labels[labels == i])
 
         # SVM decision boundary
         model = make_classification(features[:, :2], labels, kernel=KERNELS[j])
-        plot.colorized_boundaries(ax[j, 0], model)
-        plot.draw_boundaries(ax[j, 0], model, colors="w")
+        utils.colorized_boundaries(ax[j, 0], model)
+        utils.draw_boundaries(ax[j, 0], model, colors="w")
 
     # Labels
     for a, name in zip(ax[:, 0], KERNELS):
@@ -73,13 +76,13 @@ def main():
 
     # Save figure
     fig.tight_layout(w_pad=2.0)
-    fig.savefig("contents/figures/iris_confusion.png")
+    fig.savefig(f"{args.output_dir}/iris_confusion.png")
 
     # Hide confusion matrices and show decision boundaries only
     for a in ax[:, 1]:
         a.set_visible(False)
     # fig.tight_layout(w_pad=2.0)
-    fig.savefig("contents/figures/iris.png")
+    fig.savefig(f"{args.output_dir}/iris.png")
 
 
 if __name__ == "__main__":

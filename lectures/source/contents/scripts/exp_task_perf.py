@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolor
 import numpy as np
 
-import plot
+import utils
 
 equilateral_triangle = (
     np.array(
@@ -19,9 +19,12 @@ equilateral_triangle = (
 
 def main():
 
-    plot.xkcd_style()
+    # Arguments
+    args = utils.parse_args()
 
-    fig, ax = plt.subplots(figsize=(3, 3))
+    utils.xkcd_style()
+
+    fig, ax = plt.subplots(figsize=(4, 4))
 
     # Circles
     radius = 0.3
@@ -51,21 +54,18 @@ def main():
     ax.text(
         *equilateral_triangle[0],
         "experience",
-        fontsize=12,
         ha="center",
         va="center",
     )
     ax.text(
         *equilateral_triangle[1],
         "task",
-        fontsize=12,
         ha="center",
         va="center",
     )
     ax.text(
         *equilateral_triangle[2],
         "performance",
-        fontsize=12,
         ha="center",
         va="center",
     )
@@ -80,11 +80,11 @@ def main():
     # Arrows
     arrow_props = dict(
         arrowstyle="<->",
-        linewidth=1.2,
+        linewidth=1.5,
         color="k",
         connectionstyle="arc3,rad=0.5",
-        shrinkA=20,
-        shrinkB=20,
+        shrinkA=30,
+        shrinkB=30,
         mutation_scale=10,
     )
     ax.annotate(
@@ -107,7 +107,9 @@ def main():
     )
 
     # Annotations
-    fig.savefig("contents/figures/exp_task_perf_venn.png", bbox_inches="tight")
+    fig.savefig(
+        f"{args.output_dir}/exp_task_perf_venn.png", bbox_inches="tight"
+    )
 
 
 if __name__ == "__main__":

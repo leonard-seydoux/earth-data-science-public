@@ -2,8 +2,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.animation import PillowWriter
 
+import utils
+
+args = utils.parse_args()
+
 # Read face from deep learning book
-img = plt.imread("contents/data/deep-learning-figure-x-x-1.jpg")
+img = plt.imread(f"{args.data_dir}/deep-learning-figure-x-x-1.jpg")
 
 # Create figure with 3x3 subplots
 fig, ax = plt.subplots(3, 3, figsize=(4, 4))
@@ -13,7 +17,7 @@ writer = PillowWriter(fps=10)
 n_frames = 40
 
 with writer.saving(
-    fig, "contents/figures/representation_matters_face.gif", dpi=150
+    fig, f"{args.output_dir}/representation_matters_face.gif", dpi=150
 ):
     for frame in range(n_frames):
         for i in range(3):

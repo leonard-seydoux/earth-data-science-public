@@ -5,12 +5,15 @@ from sklearn import tree
 from sklearn.datasets import load_iris
 from sklearn.ensemble import RandomForestClassifier
 
-import plot
+import utils
 
-plot.xkcd_style()
+utils.xkcd_style()
 
 
 def main():
+
+    # Arguments
+    args = utils.parse_args()
 
     iris = load_iris()
     X = iris.data[:, :3]
@@ -31,14 +34,11 @@ def main():
             label="none",
         )
         for item in annotations:
-            item.set_text(4 * " ")
+            item.set_text(7 * " ")
 
     # Save
     fig.tight_layout()
-    fig.savefig(
-        "contents/figures/random_forest.png",
-        bbox_inches="tight",
-    )
+    fig.savefig(args.output_dir / "random_forest.png")
 
 
 if __name__ == "__main__":

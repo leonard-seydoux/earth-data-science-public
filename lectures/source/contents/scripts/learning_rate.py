@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.datasets import make_blobs
 from sklearn.svm import SVC
 
-import plot
+import utils
 
 
 def loss(parameters):
@@ -19,7 +19,7 @@ def loss(parameters):
 def descent(learning_rate=0.5):
 
     # Customize matplotlib style
-    plot.xkcd_style()
+    utils.xkcd_style()
 
     # Create learning rate matrix
     fig, ax = plt.subplots(figsize=(3, 3))
@@ -70,11 +70,12 @@ def descent(learning_rate=0.5):
 
 
 if __name__ == "__main__":
+    args = utils.parse_args()
     fig = descent(learning_rate=4)
-    fig.savefig("contents/figures/learning_rate_slow.png")
+    fig.savefig(f"{args.output_dir}/learning_rate_slow.png")
 
     fig = descent(learning_rate=45)
-    fig.savefig("contents/figures/learning_rate_fast.png")
+    fig.savefig(f"{args.output_dir}/learning_rate_fast.png")
 
     fig = descent(learning_rate=14)
-    fig.savefig("contents/figures/learning_rate_right.png")
+    fig.savefig(f"{args.output_dir}/learning_rate_right.png")

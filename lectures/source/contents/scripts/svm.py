@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.datasets import make_blobs
 from sklearn.svm import SVC
 
-import plot
+import utils
 
 
 def make_classification(x, y):
@@ -16,8 +16,11 @@ def make_classification(x, y):
 
 def main():
 
+    # Arguments
+    args = utils.parse_args()
+
     # Customize matplotlib style
-    plot.xkcd_style()
+    utils.xkcd_style()
 
     # Create accuracy matrix
     features, labels = make_blobs(
@@ -28,7 +31,7 @@ def main():
     fig, ax = plt.subplots(figsize=(3, 3))
 
     # Show scatter plot
-    plot.samples(ax, features, labels)
+    utils.samples(ax, features, labels)
 
     # Labels
     ax.set_xlabel("feature x₁")
@@ -36,7 +39,7 @@ def main():
     ax.set_xticks([])
     ax.set_yticks([])
 
-    fig.savefig("contents/figures/svm_data.png", dpi=300)
+    fig.savefig(f"{args.output_dir}/svm_data.png", dpi=300)
 
     # SVM decision boundary
     model = make_classification(features, labels)
@@ -61,10 +64,10 @@ def main():
             ha="right",
         )
 
-    fig.savefig("contents/figures/svm_support_vectors.png", dpi=300)
+    fig.savefig(f"{args.output_dir}/svm_support_vectors.png", dpi=300)
 
-    plot.draw_boundaries(ax, model, colors="w")
-    plot.colorized_boundaries(ax, model)
+    utils.draw_boundaries(ax, model, colors="w")
+    utils.colorized_boundaries(ax, model)
 
     # Now annotate the margins
     w = model.coef_[0]
@@ -77,7 +80,7 @@ def main():
     ax.plot(xx, yy_up, "k--", linewidth=0.8)
 
     # Save figure
-    fig.savefig("contents/figures/svm.png", dpi=300)
+    fig.savefig(f"{args.output_dir}/svm.png", dpi=300)
 
 
 if __name__ == "__main__":

@@ -4,30 +4,27 @@ import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 from sklearn.svm import SVC
 
-import plot
-
-
-def make_classification(x, y):
-    model = SVC(kernel="linear")
-    model.fit(x, y)
-    return model
+import utils
 
 
 def main():
 
+    # Arguments
+    args = utils.parse_args()
+
     # Generate data
     X, y = make_blobs(n_samples=70, centers=2, cluster_std=2.5, random_state=1)
 
-    # Classification model
-    model = make_classification(X, y)
+    # Train classifier
+    model = SVC(kernel="linear")
+    model.fit(X, y)
 
     # Initialize plot
-    plot.xkcd_style()
     fig, ax = plt.subplots(figsize=(3, 3))
 
     # Show scatter plot and boundaries
-    plot.samples(ax, X, y)
-    plot.draw_boundaries(ax, model)
+    utils.samples(ax, X, y)
+    utils.draw_boundaries(ax, model)
 
     # Annotate labels
     arrowprops = dict(
@@ -50,7 +47,7 @@ def main():
     ax.set(xlabel="feature x₁", ylabel="feature x₂", xticks=[], yticks=[])
 
     # Save
-    fig.savefig("contents/figures/classification.png")
+    fig.savefig(args.output_dir / "classification.png")
 
 
 if __name__ == "__main__":

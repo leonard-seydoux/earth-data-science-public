@@ -8,7 +8,7 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.neighbors import KNeighborsRegressor
 from sklearn.pipeline import make_pipeline
 
-import plot
+import utils
 
 
 def generate_data(n_samples=30):
@@ -32,7 +32,7 @@ def fit(model, test=False):
     np.random.seed(0)
 
     # Style
-    plot.xkcd_style()
+    utils.xkcd_style()
 
     # Create accuracy matrix
     feature, label = generate_data()
@@ -87,14 +87,16 @@ def fit(model, test=False):
 
 if __name__ == "__main__":
 
+    args = utils.parse_args()
+
     model = LinearRegression()
-    fit(model).savefig("contents/figures/fit_under.png")
-    fit(model, test=True).savefig("contents/figures/fit_under_test.png")
+    fit(model).savefig(f"{args.output_dir}/fit_under.png")
+    fit(model, test=True).savefig(f"{args.output_dir}/fit_under_test.png")
 
     model = make_pipeline(PolynomialFeatures(degree=3), LinearRegression())
-    fit(model).savefig("contents/figures/fit_right.png")
-    fit(model, test=True).savefig("contents/figures/fit_right_test.png")
+    fit(model).savefig(f"{args.output_dir}/fit_right.png")
+    fit(model, test=True).savefig(f"{args.output_dir}/fit_right_test.png")
 
     model = KNeighborsRegressor(n_neighbors=1)
-    fit(model).savefig("contents/figures/fit_over.png")
-    fit(model, test=True).savefig("contents/figures/fit_over_test.png")
+    fit(model).savefig(f"{args.output_dir}/fit_over.png")
+    fit(model, test=True).savefig(f"{args.output_dir}/fit_over_test.png")

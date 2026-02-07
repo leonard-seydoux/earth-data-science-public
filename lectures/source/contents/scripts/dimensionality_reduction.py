@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.datasets import make_blobs
 from sklearn.decomposition import PCA
 
-import plot
+import utils
 
 
 def make_reduction(x, y):
@@ -16,8 +16,11 @@ def make_reduction(x, y):
 
 def main():
 
+    # Arguments
+    args = utils.parse_args()
+
     # Customize matplotlib style
-    plot.xkcd_style()
+    utils.xkcd_style()
 
     # Create accuracy matrix
     np.random.seed(42)
@@ -33,7 +36,7 @@ def main():
     )
 
     # Show scatter plot
-    plot.samples(ax[0], X)
+    utils.samples(ax[0], X)
 
     # Dimensionality reduction
     reduced, model = make_reduction(X, np.zeros(X.shape[0]))
@@ -60,9 +63,9 @@ def main():
     z_continuous = np.linspace(reduced.min(), reduced.max(), 100)
     ax[0].plot(
         *model.inverse_transform(z_continuous[:, np.newaxis]).T,
-        color=plot.brighter("C5", -1),
+        color=utils.brighter("C5", -1),
         lw=2,
-        zorder=0
+        zorder=0,
     )
 
     # Arrow between axes
@@ -90,7 +93,7 @@ def main():
             arrowprops=dict(
                 arrowstyle="-",
                 lw=0.8,
-                color=plot.brighter("C5", -1),
+                color=utils.brighter("C5", -1),
                 connectionstyle="arc3,rad=0.0",
                 shrinkA=0,
                 shrinkB=0,
@@ -109,7 +112,7 @@ def main():
     # ax[0].set_ylim(ax[0].get_xlim())
 
     # Save figure
-    fig.savefig("contents/figures/dimensionality_reduction.png")
+    fig.savefig(f"{args.output_dir}/dimensionality_reduction.png")
 
 
 if __name__ == "__main__":

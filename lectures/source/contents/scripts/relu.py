@@ -6,16 +6,19 @@ from sklearn.datasets import make_circles
 from sklearn.decomposition import PCA, KernelPCA
 
 
-import plot
+import utils
 
 
 def main():
+
+    # Arguments
+    args = utils.parse_args()
 
     # Seed randomness
     np.random.seed(42)
 
     # Style
-    plot.xkcd_style()
+    utils.xkcd_style()
 
     # Initialize plot
     fig, ax = plt.subplots(figsize=(3.5, 3.5))
@@ -38,7 +41,7 @@ def main():
 
     # Save figure
     fig.tight_layout(h_pad=0.2)
-    fig.savefig("contents/figures/relu.png")
+    fig.savefig(f"{args.output_dir}/relu.png")
 
 
 if __name__ == "__main__":

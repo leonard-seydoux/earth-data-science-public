@@ -5,7 +5,7 @@ import matplotlib.patheffects as mpath
 import numpy as np
 from sklearn.linear_model import LinearRegression
 
-import plot
+import utils
 
 
 def generate_data(n_samples=30):
@@ -24,17 +24,20 @@ def linear_regression_line(x, y):
 
 def main():
 
+    # Arguments
+    args = utils.parse_args()
+
     # Generate data and fit model
     np.random.seed(42)
     feature, label = generate_data()
     x, y = linear_regression_line(feature, label)
 
     # Initialize plot
-    plot.xkcd_style()
+    utils.xkcd_style()
     fig, ax = plt.subplots(figsize=(3, 3))
 
     # Data samples
-    ax.plot(x, y, color=plot.brighter("C5", -1), lw=2)
+    ax.plot(x, y, color=utils.brighter("C5", -1), lw=2)
     ax.plot(feature, label, "o", color="C0", mec="k")
 
     # Remove labels
@@ -64,7 +67,7 @@ def main():
     )
 
     # Save figure
-    fig.savefig("contents/figures/regression.png")
+    fig.savefig(f"{args.output_dir}/regression.png")
 
 
 if __name__ == "__main__":

@@ -6,16 +6,19 @@ import numpy as np
 from sklearn.datasets import make_circles
 
 
-import plot
+import utils
 
 
 def main():
+
+    # Arguments
+    args = utils.parse_args()
 
     # Seed randomness
     np.random.seed(42)
 
     # Style
-    plot.xkcd_style()
+    utils.xkcd_style()
 
     # Create accuracy matrix
     features, labels = make_circles(n_samples=100, noise=0.1, factor=0.1)
@@ -28,7 +31,7 @@ def main():
     ]
 
     # Data samples
-    plot.samples(ax[0], features, labels)
+    utils.samples(ax[0], features, labels)
 
     # Regression line
     for cls in np.unique(labels):
@@ -142,7 +145,7 @@ def main():
     ax[1].annotate("back", xy=(1, 1.2), xytext=(1, 0.83), **annotate)
 
     # Save figure
-    fig.savefig("contents/figures/kernel_trick.png")
+    fig.savefig(f"{args.output_dir}/kernel_trick.png")
 
 
 if __name__ == "__main__":

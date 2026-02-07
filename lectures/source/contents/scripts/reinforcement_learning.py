@@ -2,13 +2,16 @@
 
 import matplotlib.pyplot as plt
 
-import plot
+import utils
 
 
 def main():
 
+    # Arguments
+    args = utils.parse_args()
+
     # Figure
-    plot.xkcd_style()
+    utils.xkcd_style()
     fig, ax = plt.subplots(figsize=(3, 3))
 
     # Labels
@@ -18,7 +21,7 @@ def main():
     ax.text(0.67, 0.52, "reward", va="center", ha="left", weight="normal")
 
     # Agent patch
-    plot.space_invaders(ax, facecolor="C1", center=(0.5, 0.3), size=0.17)
+    utils.space_invaders(ax, facecolor="C1", center=(0.5, 0.3), size=0.17)
 
     # Arrows
     arrowprops = dict(
@@ -54,7 +57,7 @@ def main():
     ax.set_yticks([])
 
     # Save figure
-    fig.savefig("contents/figures/reinforcement_learning.png")
+    fig.savefig(f"{args.output_dir}/reinforcement_learning.png")
 
 
 if __name__ == "__main__":

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.datasets import make_blobs
 
-import plot
+import utils
 
 
 def cluster_data(features, n_clusters):
@@ -15,6 +15,9 @@ def cluster_data(features, n_clusters):
 
 def main():
 
+    # Arguments
+    args = utils.parse_args()
+
     # Generate data
     X, _ = make_blobs(centers=3, cluster_std=1.5, random_state=42)
 
@@ -23,12 +26,12 @@ def main():
     y = model.labels_
 
     # Figure
-    plot.xkcd_style()
+    utils.xkcd_style()
     fig, ax = plt.subplots(figsize=(3, 3))
 
     # Plot samples and boundaries
-    plot.samples(ax, X, y)
-    plot.draw_boundaries(ax, model)
+    utils.samples(ax, X, y)
+    utils.draw_boundaries(ax, model)
 
     # Annotate centroids
     centroids = model.cluster_centers_
@@ -55,7 +58,7 @@ def main():
     ax.set(xlabel="feature x₁", ylabel="feature x₂", xticks=[], yticks=[])
 
     # Save figure
-    fig.savefig("contents/figures/clustering.png")
+    fig.savefig(f"{args.output_dir}/clustering.png")
 
 
 if __name__ == "__main__":

@@ -6,12 +6,15 @@ import numpy as np
 from sklearn.datasets import make_blobs
 from sklearn.cluster import SpectralClustering
 
-import plot
+import utils
 
-plot.xkcd_style()
+utils.xkcd_style()
 
 
 def main():
+
+    # Arguments
+    args = utils.parse_args()
 
     fig, ax = plt.subplots(
         nrows=2, figsize=(3.5, 5.2), gridspec_kw={"height_ratios": [3, 1.5]}
@@ -38,7 +41,7 @@ def main():
                 )
 
     # Show eigenvectors
-    plot.samples(ax[0], X, cls.labels_)
+    utils.samples(ax[0], X, cls.labels_)
 
     # Show eigenvalues
     eigenvalues = np.linalg.eigvalsh(aff.toarray())[::-1][:10]
@@ -54,7 +57,7 @@ def main():
     ax[1].set_yticks([])
 
     fig.tight_layout()
-    fig.savefig("contents/figures/spectral_clustering.png")
+    fig.savefig(f"{args.output_dir}/spectral_clustering.png")
 
 
 if __name__ == "__main__":

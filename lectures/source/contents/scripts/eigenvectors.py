@@ -3,14 +3,17 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-import plot
+import utils
 
-plot.xkcd_style()
+utils.xkcd_style()
 
 
 def main():
 
-    plot.xkcd_style()
+    # Arguments
+    args = utils.parse_args()
+
+    utils.xkcd_style()
     fig, ax = plt.subplots(figsize=(3.5, 3.5))
 
     # Arrow axes
@@ -61,7 +64,7 @@ def main():
     ax.set_aspect("equal")
 
     fig.tight_layout()
-    fig.savefig("contents/figures/eigenvectors.png")
+    fig.savefig(f"{args.output_dir}/eigenvectors.png")
 
 
 if __name__ == "__main__":

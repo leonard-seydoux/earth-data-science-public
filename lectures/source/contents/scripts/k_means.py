@@ -7,9 +7,9 @@ from sklearn.datasets import make_blobs
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
-import plot
+import utils
 
-plot.xkcd_style()
+utils.xkcd_style()
 ax_kwargs = dict(
     xlabel="feature x₁", ylabel="feature x₂", xticks=[], yticks=[]
 )
@@ -17,6 +17,8 @@ ax_kwargs = dict(
 
 def kmeans_animation(X, n_clusters=3, n_frames=12, interval=800):
     """Create a GIF visualizing K-means clustering."""
+
+    args = utils.parse_args()
 
     # Initial centroids
     centroids = np.array([[1, 1, 10, 10], [10, 10, 1, 1]]).T
@@ -27,8 +29,8 @@ def kmeans_animation(X, n_clusters=3, n_frames=12, interval=800):
     # Initialize figure and axes
     fig, ax = plt.subplots(figsize=(3, 3), tight_layout=True)
     ax.set(**ax_kwargs)
-    plot.samples(ax, X)
-    fig.savefig("contents/figures/k-means-initial.png")
+    utils.samples(ax, X)
+    fig.savefig(f"{args.output_dir}/k_means_initial.png")
 
     def update(frame):
 
@@ -42,11 +44,11 @@ def kmeans_animation(X, n_clusters=3, n_frames=12, interval=800):
         centroids = kmeans.cluster_centers_
 
         # Plot samples and centroids
-        plot.samples(ax, X, y)
+        utils.samples(ax, X, y)
         ax.plot(centroids[:, 0], centroids[:, 1], "ko", mfc="w")
 
         # Plot decision boundaries
-        plot.draw_boundaries(ax, kmeans)
+        utils.draw_boundaries(ax, kmeans)
 
         # Inertia text
         intertia_label = f"inertia = {kmeans.inertia_:.1f}"
@@ -54,11 +56,11 @@ def kmeans_animation(X, n_clusters=3, n_frames=12, interval=800):
 
     # Create and save animation
     ani = FuncAnimation(fig, update, frames=n_frames, interval=interval)
-    ani.save("contents/figures/k-means.gif")
+    ani.save(f"{args.output_dir}/k_means.gif")
 
     # Final frame
     plt.close()
-    fig.savefig("contents/figures/k-means-final.png")
+    fig.savefig(f"{args.output_dir}/k_means_final.png")
 
 
 if __name__ == "__main__":

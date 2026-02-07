@@ -1,7 +1,7 @@
 # Font 
 font.family: sans-serif
 font.sans-serif: Caveat
-font.size: 16
+font.size: 18
 font.weight: bold
 axes.labelweight: bold
 axes.titleweight: bold
@@ -18,4 +18,3 @@ axes.prop_cycle: cycler('color', ['84bdde', 'f35639', '7aa585', 'dca67a', '5a555
 # Remove facecolor 
 figure.facecolor: none
 figure.dpi: 300
-

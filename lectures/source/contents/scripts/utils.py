@@ -1,14 +1,41 @@
+"""Utilities for the Earth Data Science lectures.
+
+Includes argument parsing, color manipulation, and plotting helpers. Note that
+when imported, this module sets the matplotlib style to XKCD with some
+customizations.
+
+Made by Léonard Seydoux in 2026
+"""
+
+import argparse
+import pathlib
+
 import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as patheffects
 import numpy as np
-from scipy.ndimage import gaussian_filter
-
 from matplotlib.path import Path
 from matplotlib.patches import PathPatch
-
 from shapely.geometry import box
 from shapely.ops import unary_union
+
+
+def parse_args():
+    """Parser for common command-line arguments."""
+    parser = argparse.ArgumentParser(description="Plotting utilities.")
+    parser.add_argument(
+        "--output_dir",
+        type=pathlib.Path,
+        default=pathlib.Path("figures/"),
+        help="Output directory",
+    )
+    parser.add_argument(
+        "--data_dir",
+        type=pathlib.Path,
+        default=pathlib.Path("data"),
+        help="Input directory",
+    )
+    return parser.parse_args()
 
 
 def cycler_cmap(n):
@@ -38,7 +65,7 @@ def xkcd_style():
     """Set matplotlib to XKCD style with customizations."""
     plt.xkcd()
     plt.rcParams["path.effects"] = [patheffects.withStroke(linewidth=0)]
-    plt.style.use("contents/scripts/matplotlibrc")
+    plt.style.use("matplotlibrc")
 
 
 def plot_samples(ax, x, **kwargs):
@@ -203,3 +230,6 @@ def space_invaders(ax, center=(0.5, 0.5), size=0.4, **kwargs):
     patch = _shapely_to_pathpatch(merged, **kwargs)
     ax.add_patch(patch)
     return patch
+
+
+xkcd_style()

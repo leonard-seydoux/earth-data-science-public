@@ -5,12 +5,15 @@ from sklearn import tree
 from sklearn.datasets import load_iris
 from sklearn.tree import DecisionTreeClassifier
 
-import plot
+import utils
 
-plot.xkcd_style()
+utils.xkcd_style()
 
 
 def main():
+
+    # Arguments
+    args = utils.parse_args()
 
     iris = load_iris()
     X = iris.data[:, :3]
@@ -57,7 +60,7 @@ def main():
     # Save
     fig.tight_layout()
     fig.savefig(
-        "contents/figures/decision_tree.png",
+        f"{args.output_dir}/decision_tree.png",
         bbox_inches="tight",
     )
 

@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from matplotlib.animation import PillowWriter
 
-import plot
+import utils
 
 GRID_SEARCH_A = np.linspace(-2, 2, 12)
 GRID_SEARCH_B = np.linspace(-1, 4, 12)
@@ -25,7 +25,7 @@ def base_figure(X, y):
         fig.add_subplot(2, 1, 2, projection="3d"),
     ]
 
-    plot.plot_samples(ax[0], np.c_[X.flatten(), y.flatten()], color="C0")
+    utils.plot_samples(ax[0], np.c_[X.flatten(), y.flatten()], color="C0")
 
     # labels
     ax[0].set_xlabel("feature x₁", weight="normal")
@@ -43,7 +43,7 @@ def base_figure(X, y):
             y_pred = A[i, j] * X + B[i, j]
             Z[i, j] = np.mean((y - y_pred) ** 2)
 
-    ax[1].plot_wireframe(A, B, Z, color="C3")
+    ax[1].plot_wireframe(A, B, Z, color="C4", alpha=1)
     ax[1].set_xlabel("slope a", labelpad=-8, weight="normal")
     ax[1].set_ylabel("intercept b", labelpad=-8, weight="normal")
     ax[1].set_title("parameter space", weight="bold")
@@ -79,18 +79,21 @@ def show_test(a, b, ax, color="C1", linewidth=1, markersize=4):
 
 if __name__ == "__main__":
 
-    plot.xkcd_style()
+    args = utils.parse_args()
+    utils.xkcd_style()
 
     X, y = make_data()
     fig, ax = base_figure(X, y)
     show_test(1, 1, ax)
-    fig.savefig("contents/figures/linear_regression_true.png")
+    fig.savefig(f"{args.output_dir}/linear_regression_true.png")
 
     # Create GIF for gradient descent
     fig, ax = base_figure(X, y)
     writer = PillowWriter(fps=7)
     with writer.saving(
-        fig, "contents/figures/linear_regression_gradient_descent.gif", dpi=300
+        fig,
+        f"{args.output_dir}/linear_regression_gradient_descent.gif",
+        dpi=300,
     ):
         a, b = -2, 4
         learning_rate = 0.6
@@ -119,7 +122,7 @@ if __name__ == "__main__":
                 best_loss = loss
                 best_a, best_b = a, b
     with writer.saving(
-        fig, "contents/figures/linear_regression_grid_search.gif", dpi=300
+        fig, f"{args.output_dir}/linear_regression_grid_search.gif", dpi=300
     ):
         for a in GRID_SEARCH_A:
             for b in GRID_SEARCH_B:
@@ -138,7 +141,7 @@ if __name__ == "__main__":
     best_loss = float("inf")
     best_a, best_b = 0, 0
     with writer.saving(
-        fig, "contents/figures/linear_regression_random_search.gif", dpi=300
+        fig, f"{args.output_dir}/linear_regression_random_search.gif", dpi=300
     ):
         for _ in range(100):  # Reduced from 200 for faster generation
             a = rng.uniform(-2, 2)

@@ -3,18 +3,21 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-import plot
+import utils
 
-plot.xkcd_style()
+utils.xkcd_style()
 
 
 def main():
+
+    # Arguments
+    args = utils.parse_args()
 
     # Matrix
     X = np.random.rand(6, 3)
     U, D, VT = np.linalg.svd(X, full_matrices=True)
 
-    plot.xkcd_style()
+    utils.xkcd_style()
     fig, ax = plt.subplots(
         ncols=4,
         figsize=(6, 2.5),
@@ -42,7 +45,7 @@ def main():
         a.set_xticks([])
         a.set_yticks([])
 
-    fig.savefig("contents/figures/svd.png", bbox_inches="tight")
+    fig.savefig(f"{args.output_dir}/svd.png", bbox_inches="tight")
 
 
 if __name__ == "__main__":
