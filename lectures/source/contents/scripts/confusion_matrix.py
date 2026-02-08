@@ -17,7 +17,7 @@ def main():
     cases = ["true", "false"]
 
     # Initialize plot
-    fig, ax = plt.subplots(figsize=(3, 3))
+    fig, ax = utils.square_canvas(margin=0.22)
 
     # Show matrix
     cmap = utils.cycler_cmap(2).reversed()
@@ -37,7 +37,6 @@ def main():
     ax.xaxis.set_ticks_position("bottom")
 
     # Save
-    fig.tight_layout(pad=0.2)
     fig.savefig(args.output_dir / "confusion_matrix.png")
 
 

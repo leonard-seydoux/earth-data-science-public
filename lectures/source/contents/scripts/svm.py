@@ -1,4 +1,5 @@
-import matplotlib.pyplot as plt
+"""Support Vector Machine (SVM) example."""
+
 import numpy as np
 
 from sklearn.datasets import make_blobs
@@ -8,7 +9,6 @@ import utils
 
 
 def make_classification(x, y):
-    """Generate synthetic classification data."""
     model = SVC(kernel="linear")
     model.fit(x, y)
     return model
@@ -19,26 +19,20 @@ def main():
     # Arguments
     args = utils.parse_args()
 
-    # Customize matplotlib style
-    utils.xkcd_style()
-
     # Create accuracy matrix
     features, labels = make_blobs(
         n_samples=70, centers=2, cluster_std=2.5, random_state=1
     )
 
     # Initialize plot
-    fig, ax = plt.subplots(figsize=(3, 3))
+    fig, ax = utils.square_canvas()
 
     # Show scatter plot
-    utils.samples(ax, features, labels)
+    utils.scatter_samples(ax, features, labels)
 
     # Labels
     ax.set_xlabel("feature x₁")
     ax.set_ylabel("feature x₂")
-    ax.set_xticks([])
-    ax.set_yticks([])
-
     fig.savefig(f"{args.output_dir}/svm_data.png", dpi=300)
 
     # SVM decision boundary
@@ -64,9 +58,9 @@ def main():
             ha="right",
         )
 
-    fig.savefig(f"{args.output_dir}/svm_support_vectors.png", dpi=300)
+    fig.savefig(args.output_dir / "svm_support_vectors.png")
 
-    utils.draw_boundaries(ax, model, colors="w")
+    utils.plot_boundary_decision(ax, model, colors="w")
     utils.colorized_boundaries(ax, model)
 
     # Now annotate the margins
@@ -80,7 +74,7 @@ def main():
     ax.plot(xx, yy_up, "k--", linewidth=0.8)
 
     # Save figure
-    fig.savefig(f"{args.output_dir}/svm.png", dpi=300)
+    fig.savefig(args.output_dir / "svm.png")
 
 
 if __name__ == "__main__":

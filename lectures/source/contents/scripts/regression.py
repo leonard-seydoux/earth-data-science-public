@@ -33,8 +33,7 @@ def main():
     x, y = linear_regression_line(feature, label)
 
     # Initialize plot
-    utils.xkcd_style()
-    fig, ax = plt.subplots(figsize=(3, 3))
+    fig, ax = utils.square_canvas()
 
     # Data samples
     ax.plot(x, y, color=utils.brighter("C5", -1), lw=2)
@@ -67,7 +66,7 @@ def main():
     )
 
     # Save figure
-    fig.savefig(f"{args.output_dir}/regression.png")
+    fig.savefig(args.output_dir / "regression.png")
 
 
 if __name__ == "__main__":

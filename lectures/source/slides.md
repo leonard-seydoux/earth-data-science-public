@@ -620,7 +620,7 @@ Performance of a classifier can be derived from the confusion matrix:
 - __Precision__: fraction of true positives among predicted positives $= \frac{TP}{TP + FP}$
 - __Recall__: fraction of true positives among actual positives $= \frac{TP}{TP + FN}$
 
-![bg right 60%](contents/figures/confusion_matrix.png)
+![bg right 70%](contents/figures/confusion_matrix.png)
 
 ---
 
