@@ -1,17 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from sklearn.datasets import make_blobs
 from sklearn.decomposition import PCA
 
 import utils
-
-
-def make_reduction(x, y):
-    """Generate synthetic classification data."""
-    model = PCA(n_components=1)
-    reduced = model.fit_transform(x)
-    return reduced, model
 
 
 def main():
@@ -19,30 +11,22 @@ def main():
     # Arguments
     args = utils.parse_args()
 
-    # Customize matplotlib style
-    utils.xkcd_style()
-
-    # Create accuracy matrix
+    # Data and model
     np.random.seed(42)
     x1 = np.random.uniform(-3, 3, size=(30,))
-    x2 = x1 + np.random.normal(0, 0.7, size=x1.shape)
+    x2 = x1 + 0.8 * np.random.normal(0, 0.7, size=x1.shape)
     X = np.vstack([x1, x2]).T
+    model = PCA(n_components=1)
+    reduced = model.fit_transform(X)
 
-    # Initialize plot
-    fig, ax = plt.subplots(
-        ncols=2,
-        figsize=(3.8, 3),
-        gridspec_kw={"wspace": 0.5, "width_ratios": [1, 0.0001]},
-    )
+    # Figure
+    fig, ax = utils.square_canvas(right=0.8)
+    ax = [ax, fig.add_axes([0.95, 0.1, 0, 0.8])]
 
     # Show scatter plot
-    utils.samples(ax[0], X)
-
-    # Dimensionality reduction
-    reduced, model = make_reduction(X, np.zeros(X.shape[0]))
-
+    utils.scatter_samples(ax[0], X)
     ax[1].plot(
-        np.zeros(reduced.shape[0]),
+        np.zeros_like(reduced),
         reduced,
         "o",
         color="C1",
@@ -55,9 +39,6 @@ def main():
     ax[0].set_xlabel("feature x₁")
     ax[0].set_ylabel("feature x₂")
     ax[1].set_ylabel("latent variable z")
-    ax[1].spines[:].set_visible(False)
-    ax[1].spines["left"].set_visible(True)
-    ax[1].set_xlim(-0.5, 0.5)
 
     # Annotate
     z_continuous = np.linspace(reduced.min(), reduced.max(), 100)
@@ -75,9 +56,7 @@ def main():
         xytext=(0.7, 0.5),
         xycoords="axes fraction",
         textcoords="axes fraction",
-        arrowprops=dict(
-            arrowstyle="->", lw=1.5, color="k", connectionstyle="arc3,rad=0.0"
-        ),
+        arrowprops=utils.DEFAULT_ARROWPROPS,
     )
 
     # Collapse all samples to their projections
@@ -95,24 +74,22 @@ def main():
                 lw=0.8,
                 color=utils.brighter("C5", -1),
                 connectionstyle="arc3,rad=0.0",
-                shrinkA=0,
-                shrinkB=0,
             ),
             zorder=0,
         )
 
-    for a in ax:
-        a.set_xticks([])
-        a.set_yticks([])
-    ax[0].set_aspect("equal")
+    # Labels
+    ax[1].set_yticks([])
+    ax[1].set_xticks([])
     lim_min = min(ax[0].get_xlim()[0], ax[0].get_ylim()[0])
     lim_max = max(ax[0].get_xlim()[1], ax[0].get_ylim()[1])
     ax[0].set_xlim(lim_min, lim_max)
     ax[0].set_ylim(lim_min, lim_max)
-    # ax[0].set_ylim(ax[0].get_xlim())
+    ax[1].set_ylim(reduced.min() - 0.5, reduced.max() + 0.5)
 
     # Save figure
-    fig.savefig(f"{args.output_dir}/dimensionality_reduction.png")
+    fig.savefig(args.output_dir / "dimensionality_reduction.png")
+    fig.savefig(args.output_dir / "dimensionality_reduction.svg")
 
 
 if __name__ == "__main__":

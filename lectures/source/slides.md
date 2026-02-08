@@ -285,17 +285,17 @@ Note that $y$ is scalar in this case.
 
 
 __Supervised__
-![width:330](contents/figures/classification.png) <br>
+![width:330](contents/figures/classification.png) 
 __Predict__ $\mathbf{y}$ from $\mathbf{x}$ 
 (regression, classification)
 
 __Unsupervised__
-![width:330](contents/figures/clustering.png) <br>
+![width:330](contents/figures/clustering.png) 
 Learn data __distribution__
 $p(\mathbf{x})$ (clustering, reduction)
 
 __Reinforcement__
-![width:330](contents/figures/reinforcement_learning.png) <br>
+![width:330](contents/figures/reinforcement_learning.png) 
 Learn a policy to maximize 
 a __reward__ (gaming, robotics)
 
@@ -327,6 +327,7 @@ __Dataset:__ the set of $N$ samples $x_i$ and corresponding labels $y_i$ such as
 $$\mathcal{D} = \{(x_i, y_i)\}_{i=1}^N$$
 
 __Problem:__ optimize the parameters $\theta$ of  $f_\theta$ to predict $y$ from $x$. Find the optimal parameters $\theta^*$ that minimize $\mathcal{L}$, such as
+
 $$\theta^* = \underset{\theta}{\arg\!\min }\mathcal{L}\Big(f_\theta(x), y\Big).$$
 
 ![bg right 55%](contents/figures/linear_regression_true.png)
@@ -796,12 +797,12 @@ a __reward__ (gaming, robotics)
 
 
 __Clustering__
-![width:300](contents/figures/clustering.png)
+![width:340](contents/figures/clustering.png)
 <br> Group similar data points  
 based on some similarity criterion
 
 __Dimensionality reduction__
-![width:380](contents/figures/dimensionality_reduction.png)
+![width:340](contents/figures/dimensionality_reduction.png)
 <br> Find a low-dimensional 
 representation of the data 
 
@@ -820,7 +821,7 @@ Again, many possibilities.
 
 ## Definitions of clustering
 
-![bg right 80%](contents/figures/k_means_initial.png)
+![bg right 70%](contents/figures/k_means_initial.png)
 
 - _Top-bottom_: partition the heterogeneous data into __homogeneous__ subsets
 
@@ -833,7 +834,7 @@ __We need to provide a definition of similarity or homogeneity__
 
 ## _k_-means clustering
 
-![bg right 80%](contents/figures/k_means_final.png)
+![bg right 70%](contents/figures/k_means_final.png)
 
 
 $k$-means is a clustering algorithm that partitions the data into $k$ clusters by minimizing the __inertia__:
@@ -855,7 +856,7 @@ In practice, we need to provide the number of clusters $k$, and the algorithm wi
 3. __Update__ centroids
 4. __Repeat__ until convergence.
 
-![bg right 80%](contents/figures/k_means.gif)
+![bg right 70%](contents/figures/k_means.gif)
 
 <!-- _footer: Wikipedia -->
 
@@ -878,12 +879,12 @@ Spectral clustering uses the eigenvectors of the affinity matrix to find the clu
 
 
 __Clustering__
-![width:300](contents/figures/clustering.png)
+![width:340 opacity:0.5](contents/figures/clustering.png)
 <br> Group similar data points  
 based on some similarity criterion
 
 __Dimensionality reduction__
-![width:380](contents/figures/dimensionality_reduction.png)
+![width:340](contents/figures/dimensionality_reduction.png)
 <br> Find a low-dimensional 
 representation of the data 
 
@@ -901,7 +902,7 @@ $$
 
 where $\mathbf{A}$ is a square matrix, $\mathbf{x}$ is the eigenvector, and $d$ is the eigenvalue.
 
-![bg right 80%](contents/figures/eigenvectors.png)
+![bg right 70%](contents/figures/eigenvectors.png)
 
 ---
 
@@ -1235,27 +1236,19 @@ Splitting the dataset into a __training__ and a __testing__ set, monitor both pe
 
 ## The right complexity
 
-<div>
-
 The __model complexity__ is roughly the number of parameters of the model. The __model generalization error__ is the error on the test set.
 
 ![bg right 90%](images/models/complexity.png)
 
-</div>
-
 ---
 
 ## Regularization
-
-<div>
 
 __Regularization__ is a technique to control overfitting by adding a penalty term $\mathcal{R}$ to the loss function. The __regularization parameter__ $\lambda$ controls the strength of the regularization.
 
 $$
 \mathcal{L}_\mathrm{reg} = \mathcal{L} + \lambda \mathcal{R} = \mathcal{L} + \lambda \|\mathbf{\theta}\|^2_2
 $$
-
-</div>
 
 ![bg right 90%](images/models/wd.png)
 
@@ -1482,18 +1475,6 @@ Here are the __filters from the first layer__ of VGG16 after training on 100k+ i
 
 ### https://adamharley.com/nn_vis/cnn/3d.html
 
----
-
-<!-- _class: titlepage-->
-
-<div>
-
-
-# 7. Applications
-
-The illustration of the previous concepts with examples from seismology. And then you will be ready to apply these concepts to your own problems!
-
-</div>
 
 ---
 
@@ -1578,7 +1559,7 @@ __Predictions__: likelihood $q_i(x)$ of $P$, $S$, and $N$oise over time<br>
 
 ---
 
-## Transfer learning and fine-tuning
+## Transfer learning 
 
 <div>
 
@@ -1629,21 +1610,15 @@ Libraries are constantly evolving, and the documentation is often incomplete.
 
 ## Deep unsupervised learning
 
-<div align=center>
-
 Deep neural networks can be used for unsupervised learning:
 __Autoencoders__: learn a low-dimensional representation of the data.
 __Generative adversarial networks__: learn a generative model of the data.
 
 ![width:900px](https://fr.mathworks.com/discovery/autoencoder/_jcr_content/mainParsys/image.adapt.480.medium.svg/1665035671723.svg)
 
-</div>
-
 ---
 
 ## Autoencoders
-
-<div style="flex-basis: 40%;">
 
 Autoencoders are neural networks that learn a low-dimensional representation of the data. They are composed of an __encoder__ and a __decoder__.
 
@@ -1655,25 +1630,17 @@ $$
 \mathcal{L} = \|\mathbf{x} - \mathbf{x}'\|^2
 $$
 
-</div>
-<div style="flex-basis: 40%;">
 
-![](images/examples/valentine_ae.png)
-
-</div>
+![bg right 80%](images/examples/valentine_ae.png)
 
 ---
 
 ## Convolutional autoencoders
 
-<div align=center>
-
 Convolutional autoencoders use convolutional layers instead of fully connected layers.
 They are used for image denoising, compression, and quality assessment.
 
 ![width:1000px](https://miro.medium.com/v2/resize:fit:1400/1*gzJAJDLDavH_W7Zv2M2J7w.png)
-
-</div>
 
 ---
 

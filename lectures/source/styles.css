@@ -196,11 +196,10 @@ section {
     display: flex;
     padding-left: 100px;
     padding-right: 100px;
-    padding-top: 100px;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    gap: 40px;
+    gap: 10px;
     color: var(--color);
     background-color: var(--color-sable);
 }
@@ -265,8 +264,6 @@ section.titlepage p {
     max-width: 1000px;
     margin-top: 10px;
 }
-
-
 
 /* Contents based on titlepage */
 

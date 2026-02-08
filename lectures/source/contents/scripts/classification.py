@@ -1,6 +1,5 @@
-"""Classification with Support Vector Machines (SVM)"""
+"""Classification with linear support vector machine"""
 
-import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
 from sklearn.svm import SVC
 
@@ -12,33 +11,24 @@ def main():
     # Arguments
     args = utils.parse_args()
 
-    # Generate data
+    # Data and model
     X, y = make_blobs(n_samples=70, centers=2, cluster_std=2.5, random_state=1)
-
-    # Train classifier
     model = SVC(kernel="linear")
     model.fit(X, y)
 
     # Initialize plot
-    fig, ax = plt.subplots(figsize=(3, 3))
+    fig, ax = utils.square_canvas()
 
     # Show scatter plot and boundaries
-    utils.samples(ax, X, y)
-    utils.draw_boundaries(ax, model)
+    utils.scatter_samples(ax, X, y)
+    utils.plot_boundary_decision(ax, model)
 
-    # Annotate labels
-    arrowprops = dict(
-        arrowstyle="->",
-        connectionstyle="arc3,rad=0.2",
-        mutation_scale=15,
-        lw=1.2,
-    )
+    # Class annotation
     annotate = dict(
-        arrowprops=arrowprops,
+        arrowprops=utils.DEFAULT_ARROWPROPS,
         ha="center",
         va="center",
         xycoords="axes fraction",
-        fontweight="normal",
     )
     ax.annotate("label y=0", xy=(0.51, 0.75), xytext=(0.3, 0.9), **annotate)
     ax.annotate("label y=1", xy=(0.45, 0.25), xytext=(0.65, 0.07), **annotate)

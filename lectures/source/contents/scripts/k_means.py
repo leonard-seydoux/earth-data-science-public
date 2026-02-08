@@ -9,28 +9,27 @@ from sklearn.preprocessing import StandardScaler
 
 import utils
 
-utils.xkcd_style()
-ax_kwargs = dict(
-    xlabel="feature x₁", ylabel="feature x₂", xticks=[], yticks=[]
-)
 
+def main(n_frames=12, interval=800):
 
-def kmeans_animation(X, n_clusters=3, n_frames=12, interval=800):
-    """Create a GIF visualizing K-means clustering."""
-
+    # Arguments
     args = utils.parse_args()
 
-    # Initial centroids
-    centroids = np.array([[1, 1, 10, 10], [10, 10, 1, 1]]).T
-
-    # Initial KMeans model
-    kmeans = KMeans(n_clusters=n_clusters, init=centroids, max_iter=0)
+    # Data and model
+    n_clusters = 4
+    X, _ = make_blobs(centers=n_clusters, cluster_std=1.2, random_state=40)
+    X = StandardScaler().fit_transform(X)
+    init_centroids = np.array([[1, 1, 10, 10], [10, 10, 1, 1]]).T
+    model = KMeans(n_clusters=n_clusters, init=init_centroids, max_iter=0)
 
     # Initialize figure and axes
-    fig, ax = plt.subplots(figsize=(3, 3), tight_layout=True)
+    fig, ax = utils.square_canvas()
+    ax_kwargs = dict(
+        xlabel="feature x₁", ylabel="feature x₂", xticks=[], yticks=[]
+    )
     ax.set(**ax_kwargs)
-    utils.samples(ax, X)
-    fig.savefig(f"{args.output_dir}/k_means_initial.png")
+    utils.scatter_samples(ax, X)
+    fig.savefig(args.output_dir / "k_means_initial.png")
 
     def update(frame):
 
@@ -39,38 +38,29 @@ def kmeans_animation(X, n_clusters=3, n_frames=12, interval=800):
         ax.set(**ax_kwargs)
 
         # Update number of iterations
-        kmeans.max_iter = frame + 1
-        y = kmeans.fit_predict(X)
-        centroids = kmeans.cluster_centers_
+        model.max_iter = frame + 1
+        y = model.fit_predict(X)
+        centroids = model.cluster_centers_
 
         # Plot samples and centroids
-        utils.samples(ax, X, y)
+        utils.scatter_samples(ax, X, y)
         ax.plot(centroids[:, 0], centroids[:, 1], "ko", mfc="w")
 
         # Plot decision boundaries
-        utils.draw_boundaries(ax, kmeans)
+        utils.plot_boundary_decision(ax, model)
 
         # Inertia text
-        intertia_label = f"inertia = {kmeans.inertia_:.1f}"
-        ax.text(0.5, 0.05, intertia_label, transform=ax.transAxes, ha="center")
+        inertia_label = f"inertia = {model.inertia_:.1f}"
+        ax.text(0.5, 0.05, inertia_label, transform=ax.transAxes, ha="center")
 
     # Create and save animation
     ani = FuncAnimation(fig, update, frames=n_frames, interval=interval)
-    ani.save(f"{args.output_dir}/k_means.gif")
+    ani.save(args.output_dir / "k_means.gif")
 
     # Final frame
     plt.close()
-    fig.savefig(f"{args.output_dir}/k_means_final.png")
+    fig.savefig(args.output_dir / "k_means_final.png")
 
 
 if __name__ == "__main__":
-
-    # Parameters
-    n_clusters = 4
-
-    # Generate standardized features
-    X, _ = make_blobs(centers=n_clusters, cluster_std=1.2, random_state=40)
-    X = StandardScaler().fit_transform(X)
-
-    # Clustering animation
-    kmeans_animation(X, n_clusters=n_clusters)
+    main()

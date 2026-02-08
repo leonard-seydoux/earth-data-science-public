@@ -1,4 +1,4 @@
-"""Utilities for the Earth Data Science lectures.
+"""Utilities for plotting and visualization.
 
 Includes argument parsing, color manipulation, and plotting helpers. Note that
 when imported, this module sets the matplotlib style to XKCD with some
@@ -13,11 +13,38 @@ import pathlib
 import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
 import matplotlib.patheffects as patheffects
-import numpy as np
+
 from matplotlib.path import Path
 from matplotlib.patches import PathPatch
+
+import numpy as np
+
 from shapely.geometry import box
 from shapely.ops import unary_union
+
+DEFAULT_ARROWPROPS = dict(
+    arrowstyle="->",
+    connectionstyle="arc3,rad=0.2",
+    mutation_scale=15,
+    lw=1.2,
+)
+
+
+
+def square_canvas(
+    figsize=(3, 3), margin=0.1, left=None, bottom=None, right=None, top=None
+):
+    """Set equal aspect ratio and add margin."""
+    fig = plt.figure(figsize=figsize)
+    left = margin if left is None else left
+    bottom = margin if bottom is None else bottom
+    right = 1 - margin if right is None else right
+    top = 1 - margin if top is None else top
+    width = right - left
+    height = top - bottom
+    ax = fig.add_axes([left, bottom, width, height])
+    ax.set(xticks=[], yticks=[])
+    return fig, ax
 
 
 def parse_args():
@@ -68,30 +95,6 @@ def xkcd_style():
     plt.style.use("matplotlibrc")
 
 
-def plot_samples(ax, x, **kwargs):
-    """Plot classes with different colors and markers."""
-    kwargs.setdefault("marker", "o")
-    kwargs.setdefault("ls", "")
-    kwargs.setdefault("mec", "k")
-    kwargs.setdefault("ms", 5)
-    ax.plot(*x.T[:2], **kwargs)
-
-
-def samples(ax, X, y=None, **kwargs):
-    """Plot labeled samples."""
-    # Default scatter kwargs
-    kwargs.setdefault("marker", "o")
-    kwargs.setdefault("ls", "")
-    kwargs.setdefault("mec", "k")
-    kwargs.setdefault("ms", 5)
-
-    # Plot each class separately
-    y = y if y is not None else np.zeros(X.shape[0], dtype=int)
-    categories = sorted(set(y))
-    for category in categories:
-        ax.plot(*X[y == category].T[:2], label=f"Class {category}", **kwargs)
-
-
 def colorized_boundaries(ax, model):
     """Plot class boundaries for classification model."""
     x1, x2, boundaries = get_boundaries(model, ax, n=500)
@@ -103,7 +106,7 @@ def colorized_boundaries(ax, model):
     ax.contourf(x1, x2, boundaries, cmap=cmap, alpha=0.3)
 
 
-def draw_boundaries(ax, model, n=500, **kwargs):
+def plot_boundary_decision(ax, model, n=500, **kwargs):
     """Plot cluster boundaries for KMeans model."""
     # Get boundaries
     x1, x2, boundaries = get_boundaries(model, ax, n=n)
@@ -117,6 +120,18 @@ def draw_boundaries(ax, model, n=500, **kwargs):
 
     # Draw contours
     return ax.contour(x1, x2, boundaries, **kwargs)
+
+
+def scatter_samples(ax, X, y=None, **kwargs):
+    """Plot labeled samples."""
+    kwargs.setdefault("marker", "o")
+    kwargs.setdefault("ls", "")
+    kwargs.setdefault("mec", "k")
+    kwargs.setdefault("ms", 5)
+    y = y if y is not None else np.zeros(X.shape[0], dtype=int)
+    categories = sorted(set(y))
+    for category in categories:
+        ax.plot(*X[y == category].T[:2], label=f"Class {category}", **kwargs)
 
 
 def _ring_to_verts_codes(ring):
@@ -232,4 +247,5 @@ def space_invaders(ax, center=(0.5, 0.5), size=0.4, **kwargs):
     return patch
 
 
+# Apply the XKCD style globally when this module is imported
 xkcd_style()
