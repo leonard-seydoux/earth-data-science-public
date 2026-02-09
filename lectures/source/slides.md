@@ -752,7 +752,7 @@ Classification of seismo-volcanic events<br>
 
 ## Notebook 3
 
-Lidar cloud classification
+Lidar cloud point classification
 ![](contents/figures/notebook_3.png)
 
 ![bg right grayscale](https://upload.wikimedia.org/wikipedia/commons/d/de/Forêt_fontainebleau_pins.jpg)
