@@ -30,7 +30,6 @@ DEFAULT_ARROWPROPS = dict(
 )
 
 
-
 def square_canvas(
     figsize=(3, 3), margin=0.1, left=None, bottom=None, right=None, top=None
 ):
@@ -45,6 +44,35 @@ def square_canvas(
     ax = fig.add_axes([left, bottom, width, height])
     ax.set(xticks=[], yticks=[])
     return fig, ax
+
+
+def vertical_squares_canvas(
+    figsize=(3, 6),
+    margin=0.1,
+    left=None,
+    bottom=None,
+    right=None,
+    top=None,
+    vspace=None,
+):
+    """Create two square axes stacked vertically with equal aspect ratio."""
+    aspect_ratio = figsize[0] / figsize[1]
+    fig = plt.figure(figsize=figsize)
+    left = margin if left is None else left
+    bottom = margin * aspect_ratio if bottom is None else bottom
+    right = 1 - margin if right is None else right
+    top = 1 - margin * aspect_ratio if top is None else top
+    width = right - left
+    vspace = 2 * margin * aspect_ratio if vspace is None else vspace
+    height = (top - bottom) / 2 - vspace / 2
+
+    ax1 = fig.add_axes([left, bottom + height + vspace, width, height])
+    ax2 = fig.add_axes([left, bottom, width, height])
+
+    for ax in (ax1, ax2):
+        ax.set(xticks=[], yticks=[])
+
+    return fig, ax1, ax2
 
 
 def parse_args():

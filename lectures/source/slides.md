@@ -646,7 +646,6 @@ __Random forests__ are ensembles of decision trees that vote for $y$. All trees 
 
 ## Representation matters
 
-<!-- ![bg right 90%](images/deep-learning-book/figure-1-1.png) -->
 ![bg right 45%](contents/figures/representation_matters.png)
 There is no need for a complex model if you have a good __representation__ of the data.
 
@@ -667,19 +666,15 @@ Learned features?
 
 ## Representation matters
 
-<div>
+
 
 We can see waveforms $\mathbf{x}\in\mathbb{R}^N$ as points of a $N$-dimensional space 
 
-<img src="images/waveforms/waveform_0.png" width=700/>
+![](contents/images/waveforms/waveform_0.png)
 
-Yet, seismic waveform do not occupy this space fully, likely very sparse.
+Yet, seismic waveform do not occupy this space fully, likely very sparse. __Dimension > Information__
 
-### Dimension > Information
-
-</div>
-
-![bg right 80%](images/papers/valentine2012spot.png)
+![bg right 80%](contents/images/papers/valentine2012spot.png)
 
 ---
 
@@ -700,7 +695,7 @@ Likewise waveforms images lie on a __manifold__ of much lower dimension.
 
 __Supervised learning__ experiences a set of examples containing features $\mathbf{x}_i \in \mathbb{X}$ associated with labels $\mathbf{y} \in \mathbb{Y}$ to be predicted from the features (here, classification). <br>
 
-![bg right 90%](images/examples/malfante_2018.png)
+![bg right 90%](contents/images/papers/malfante_2018.png)
 
 <!-- _footer: Malfante et al. (2018) -->
 
@@ -713,7 +708,7 @@ and $\mathbf{y} \in [0, \ldots, 5]$.
 
 Which __representation__ of $\mathbf{x}$ works best?
 
-![bg right 90%](images/examples/malfante_2018.png)
+![bg right 90%](contents/images/papers/malfante_2018.png)
 
 <!-- _footer: Malfante et al. (2018) -->
 
@@ -721,7 +716,7 @@ Which __representation__ of $\mathbf{x}$ works best?
 
 ## Handcrafted features
 
-![](images/examples/features.png)
+![](contents/images/papers/features.png)
 
 <!-- _footer: Jasperson et al. (2022) -->
 
@@ -1238,7 +1233,7 @@ Splitting the dataset into a __training__ and a __testing__ set, monitor both pe
 
 The __model complexity__ is roughly the number of parameters of the model. The __model generalization error__ is the error on the test set.
 
-![bg right 90%](images/models/complexity.png)
+![bg right 50%](contents/figures/parametrization.png)
 
 ---
 
