@@ -1,19 +1,22 @@
 # Font 
-font.family: sans-serif
-font.sans-serif: Caveat
+font.family: serif
+font.serif: Latin Modern Roman
+mathtext.fontset: cm
+axes.formatter.use_mathtext: True
 font.size: 18
 font.weight: bold
-axes.labelweight: bold
+# axes.labelweight: normal
 axes.titleweight: bold
 
 # Tick widths
-xtick.major.width: 1.5
-ytick.major.width: 1.5
-lines.linewidth: 1.5
-patch.linewidth: 1.5
+xtick.major.width: 1
+ytick.major.width: 1
+lines.linewidth: 1
+patch.linewidth: 1
+axes.linewidth: 1
 
 # Colors from the IPGP chart
-axes.prop_cycle: cycler('color', ['84bdde', 'f35639', '7aa585', 'dca67a', '5a555e', 'f7f3ef'])
+# axes.prop_cycle: cycler('color', ['804AD2', 'f35639', '7aa585', 'BF7437', '5a555e', 'DDC97F'])
 
 # Remove facecolor 
 figure.facecolor: none

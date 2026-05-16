@@ -5,14 +5,11 @@
 /* Font-awesome */
 @import 'https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.2/css/all.min.css';
 
-/* Source Sans 3 font */
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
-
 /* Root variables */
 :root {
 
     /* Fonts */
-    --font: 'Source Sans 3';
+    --font: 'KaTeX_Main';
     --font-code: 'Cascadia Code';
 
     /* IPGP color palette */
@@ -29,15 +26,15 @@
     --color-olivine: #7aa585;
 
     /* Color settings */
-    --color: var(--color-graphite);
-    --color-h1: var(--color-graphite);
-    --color-h2: var(--color-graphite);
+    --color: black;
+    --color-h1: black;
+    --color-h2: black;
     --color-h2-bg: transparent;
-    --color-katex: var(--color-olivine);
-    --color-link: var(--color-magma);
+    --color-katex: black;
+    --color-link: black;
     --color-code-link: var(--color-blueschist);
-    --color-footer: var(--color-olivine);
-    --color-titlepage-bg: var(--color-sable);
+    --color-footer: #bbb;
+    --color-titlepage-bg: #eee;
 }
 
 /* General title settings */
@@ -85,7 +82,7 @@ h1 {
 
 /* Slide titles are fixed at the top of the page */
 h2 {
-    font-weight: 900;
+    font-weight: 700;
     text-align: center;
     position: fixed;
     top: 10px;
@@ -109,7 +106,7 @@ h4 strong {
 
 /* Largest bold style */
 strong {
-    font-weight: 900;
+    font-weight: 700;
 }
 
 /* Slide numbers */
@@ -152,11 +149,12 @@ a {
     font-family: inherit;
     font-size: 100%;
     color: var(--color-link);
+    background-color: #ddd;
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-color: var(--color-link);
-    text-decoration-thickness: 2.5px;
-    text-underline-offset: 9px;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 7px;
 }
 
 /* Code-style links */
@@ -201,7 +199,7 @@ section {
     align-items: center;
     gap: 10px;
     color: var(--color);
-    background-color: var(--color-sable);
+    background-color: var(--color-titlepage-bg);
 }
 
 section div,
@@ -224,7 +222,7 @@ img {
 
 section.titlepage {
     display: block;
-    background-color: var(--color-sable);
+    background-color: var(--color-titlepage-bg);
     background-image: url("contents/images/logos/ipgp-white.png");
     background-size: 1800px;
     background-position-x: 50%;

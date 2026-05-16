@@ -104,6 +104,8 @@ def brighter(color, amount=0.5):
     c = np.array(mcolors.to_rgb(color))
     white = np.array([1.0, 1.0, 1.0])
     new_c = c + (white - c) * amount
+    if np.any(new_c > 1.0) or np.any(new_c < 0.0):
+        new_c = np.clip(new_c, 0, 1)
     return mcolors.to_hex(new_c)
 
 
@@ -116,9 +118,24 @@ def get_boundaries(model, ax, n=100):
     return x1, x2, z.reshape(x1.shape)
 
 
+def samples(ax, X, y, **kwargs):
+    """Scatter plot of 2D samples X colored by class labels y."""
+    colors = plt.rcParams["axes.prop_cycle"].by_key()["color"]
+    for i, label in enumerate(np.unique(y)):
+        mask = y == label
+        ax.scatter(
+            X[mask, 0], X[mask, 1], color=colors[i % len(colors)], **kwargs
+        )
+
+
+def plot_samples(ax, X, color=None, **kwargs):
+    """Scatter plot of 2D samples X with a single color."""
+    ax.scatter(X[:, 0], X[:, 1], color=color, **kwargs)
+
+
 def xkcd_style():
     """Set matplotlib to XKCD style with customizations."""
-    plt.xkcd()
+    # plt.xkcd()
     plt.rcParams["path.effects"] = [patheffects.withStroke(linewidth=0)]
     plt.style.use("matplotlibrc")
 
@@ -148,6 +165,15 @@ def plot_boundary_decision(ax, model, n=500, **kwargs):
 
     # Draw contours
     return ax.contour(x1, x2, boundaries, **kwargs)
+
+
+def draw_boundaries(ax, model, n=500, **kwargs):
+    """Draw decision boundaries as contour lines."""
+    x1, x2, boundaries = get_boundaries(model, ax, n=n)
+    ax.set_xlim(ax.get_xlim())
+    ax.set_ylim(ax.get_ylim())
+    levels = np.arange(-0.5, len(np.unique(boundaries)), 1)
+    return ax.contour(x1, x2, boundaries, levels=levels, **kwargs)
 
 
 def scatter_samples(ax, X, y=None, **kwargs):

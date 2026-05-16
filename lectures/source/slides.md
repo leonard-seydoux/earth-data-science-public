@@ -285,14 +285,16 @@ Note that $y$ is scalar in this case.
 
 
 __Supervised__
-![width:330](contents/figures/classification.png) 
-__Predict__ $\mathbf{y}$ from $\mathbf{x}$ 
+Predict $y$ from $x$ 
 (regression, classification)
+![width:330](contents/figures/classification.png) 
+
 
 __Unsupervised__
-![width:330](contents/figures/clustering.png) 
 Learn data __distribution__
 $p(\mathbf{x})$ (clustering, reduction)
+![width:330](contents/figures/clustering.png) 
+
 
 __Reinforcement__
 ![width:330](contents/figures/reinforcement_learning.png) 
@@ -387,14 +389,12 @@ __Cons:__ gets stuck in local minima, slow to converge, needs differentiability.
 
 ## Gradient descent
 
-__Implementation:__
-
 1. Initiate model $\,\theta = (a_0, b_0)$
 1. Compute gradient $\,\nabla \mathcal{L}(\theta)$
 1. Update $\,\theta \leftarrow \theta - \eta \nabla \mathcal{L}(\theta)$
 1. Repeat until convergence
 
-__Hyperparameters:__ the __learning rate__ $\eta$ defines the update step.
+The learning rate $\eta$ is a __hyperparameter__ that defines the update step.
 
 </div>
 

@@ -36,25 +36,25 @@ def main():
     fig, ax = utils.square_canvas()
 
     # Data samples
-    ax.plot(x, y, color=utils.brighter("C5", -1), lw=2)
+    ax.plot(x, y, color=utils.brighter("C5", -1))
     ax.plot(feature, label, "o", color="C0", mec="k")
 
     # Remove labels
-    ax.set_xlabel("feature x")
-    ax.set_ylabel("label y")
+    ax.set_xlabel("feature $x$")
+    ax.set_ylabel("label $y$")
     ax.set_xticks([])
     ax.set_yticks([])
 
     # Annotate model
     ax.annotate(
-        "model",
+        r"model $f_\theta$",
         xy=(1.5, 1.5),
         xytext=(0.1, 0.95),
         arrowprops=dict(
             arrowstyle="->",
             connectionstyle="arc3,rad=-0.2",
             mutation_scale=15,
-            lw=1.2,
+            lw=1,
             shrinkA=10,
             shrinkB=30,
         ),

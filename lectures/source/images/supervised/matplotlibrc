@@ -1,9 +1,12 @@
 # Font options
-font.family: Helvetica
+font.family: serif
+font.serif: Latin Modern Roman
+mathtext.fontset: cm
+axes.formatter.use_mathtext: True
 font.size: 10
 
 # Axes options
-axes.facecolor: "#ffffff55"
+axes.facecolor: #ffffff55"
 axes.edgecolor: 0.5
 lines.linewidth: 1
 axes.labelcolor: 0.5
@@ -13,7 +16,7 @@ xtick.labelcolor: 0.5
 ytick.labelcolor: 0.5
 
 # Figure options
-figure.facecolor: "none"
+figure.facecolor: none
 figure.figsize: 2, 2
 
 # Save figure options

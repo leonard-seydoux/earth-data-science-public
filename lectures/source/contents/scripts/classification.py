@@ -29,12 +29,27 @@ def main():
         ha="center",
         va="center",
         xycoords="axes fraction",
+        fontweight="normal",
     )
-    ax.annotate("label y=0", xy=(0.51, 0.75), xytext=(0.3, 0.9), **annotate)
-    ax.annotate("label y=1", xy=(0.45, 0.25), xytext=(0.65, 0.07), **annotate)
+    ax.annotate(
+        "label $y=0$",
+        xy=(0.51, 0.75),
+        xytext=(0.3, 0.9),
+        color="C0",
+        **annotate
+    )
+    ax.annotate(
+        "label $y=1$",
+        xy=(0.45, 0.25),
+        xytext=(0.65, 0.07),
+        color="C1",
+        **annotate
+    )
 
     # Axes labels
-    ax.set(xlabel="feature x₁", ylabel="feature x₂", xticks=[], yticks=[])
+    ax.set(
+        xlabel="feature $x_1$", ylabel="feature $x_2$", xticks=[], yticks=[]
+    )
 
     # Save
     fig.savefig(args.output_dir / "classification.png")
