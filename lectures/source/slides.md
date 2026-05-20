@@ -9,10 +9,7 @@ paginate: false
 
 # Earth data science
 
-Master lecture at the [institut de physique du globe de Paris](https://www.ipgp.fr) inspired by the [scikit-learn](https://scikit-learn.org/stable/) documentation and the [deep learning](https://www.deeplearningbook.org/) book.
-
-`Léonard Seydoux` `Antoine Lucas` `Éléonore Stutzmann` 
-`Alexandre Fournier` `Geneviève Moguilny` 
+A master lecture at the [institut de physique du globe de Paris](https://www.ipgp.fr) inspired by the [scikit-learn](https://scikit-learn.org/stable/) documentation and the [deep learning](https://www.deeplearningbook.org/) book, by L$\text{é}$onard Seydoux, Antoine Lucas, $\text{É}$l$\text{é}$onore Stutzmann, Alexandre Fournier, and Geneviève Moguilny.
 
 [![height:30](https://img.shields.io/badge/github-leonard--seydoux/earth--data--science--public-white?logo=github)](https://github.com/leonard-seydoux/earth-data-science-public) 
 
@@ -253,16 +250,7 @@ $$\theta^* = \underset{\theta}{\arg\!\min}\, \mathcal{L}\Big(f_\theta(\mathbf{x}
 
 ## Vocabulary and symbols
 
-<div>
 
-An image is a sample $\bf x$ with 
-$$\mathbf{x} \in \mathbb{X} = \mathbb{R}^{H \times W \times C}$$
-$H$ is the height, $W$ the width, and $C$ the channels. The labels are a category $y$ with
-$$y \in \mathbb{Y} = \{0, 1, \ldots, K\}$$
-with $K$ the number of categories. 
-Note that $y$ is scalar in this case.
-
-</div>
 <div>
 
 | Symbol | Name |
@@ -276,6 +264,14 @@ Note that $y$ is scalar in this case.
 |$T$| Target space dimension|
 |$\mathbb{X}$| Data space|
 |$\mathbb{Y}$| Label space|
+
+</div>
+<div>
+
+An image $\mathbf{x} \in \mathbb{X} = \mathbb{R}^{H \times W \times C}$ is a sample with $H$ is the height, $W$ the width, and $C$ the channels. The labels are a category $y$ with
+$$y \in \mathbb{Y} = \{0, 1, \ldots, K\}$$
+with $K$ the number of categories. 
+Note that $y$ is scalar in this case.
 
 </div>
 

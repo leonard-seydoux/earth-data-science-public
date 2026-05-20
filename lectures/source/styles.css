@@ -10,7 +10,7 @@
 
     /* Fonts */
     --font: 'KaTeX_Main';
-    --font-code: 'Cascadia Code';
+    --font-code: 'KaTeX_Typewriter';
 
     /* IPGP color palette */
     --color-lava: #ef3b37;
@@ -149,7 +149,6 @@ a {
     font-family: inherit;
     font-size: 100%;
     color: var(--color-link);
-    background-color: #ddd;
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-color: var(--color-link);
@@ -158,6 +157,11 @@ a {
 }
 
 /* Code-style links */
+
+a:has(img) {
+    text-decoration: none;
+    background-color: transparent;
+}
 
 a:has(code) {
     vertical-align: top;
@@ -176,7 +180,7 @@ a:has(code)>code {
 
 .katex {
     color: var(--color-katex);
-    font-size: 115%;
+    font-size: 100%;
 }
 
 .emoji {
